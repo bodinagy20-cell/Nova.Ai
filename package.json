@@ -1,0 +1,18 @@
+{
+  "name": "nova-ai-chat",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NOVA AI Arabic chat UI with a secure server-side OpenAI API connection",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": { "node": ">=18.17.0" },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0"
+  }
+}

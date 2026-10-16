@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA AI — ذكاء بلا حدود</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
+:root{--bg:#080914;--panel:#111326;--panel2:#171a32;--text:#f4f5ff;--muted:#a6a9c5;--purple:#8b5cf6;--cyan:#40e0d0;--line:rgba(255,255,255,.09)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#252052 0,transparent 35%),radial-gradient(ellipse at 0% 35%,#102a40 0,transparent 32%),var(--bg);color:var(--text);font-family:'Cairo',system-ui,sans-serif;min-height:100vh}
+button,input,textarea{font:inherit}button{cursor:pointer}
+.wrap{max-width:1180px;margin:auto;padding:0 24px}
+nav{height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;font-size:22px;font-weight:900;letter-spacing:.4px}.logo{width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,var(--purple),var(--cyan));display:grid;place-items:center;color:#080914;font-size:23px;box-shadow:0 0 30px #8b5cf655}
+.navlinks{display:flex;gap:28px;color:var(--muted);font-size:14px}.navlinks a{color:inherit;text-decoration:none}.navlinks a:hover{color:white}
+.pill{border:1px solid #ffffff24;background:#ffffff09;color:white;padding:10px 17px;border-radius:999px}
+.hero{text-align:center;padding:78px 0 44px}.eyebrow{display:inline-flex;align-items:center;gap:9px;border:1px solid #8b5cf655;background:#8b5cf615;padding:8px 15px;border-radius:999px;color:#d8ccff;font-size:13px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+h1{font-size:clamp(38px,6vw,72px);line-height:1.2;letter-spacing:-1.8px;margin:22px auto 18px;max-width:850px;font-weight:900}
+.gradient{background:linear-gradient(90deg,#a78bfa,#67e8f9,#a7f3d0);background-clip:text;-webkit-background-clip:text;color:transparent}
+.hero p{max-width:650px;margin:0 auto;color:var(--muted);font-size:17px;line-height:2}
+.actions{display:flex;justify-content:center;gap:12px;margin-top:28px;flex-wrap:wrap}.primary{border:0;color:#090a17;font-weight:800;background:linear-gradient(110deg,#a78bfa,#5eead4);padding:13px 24px;border-radius:14px;box-shadow:0 10px 35px #8b5cf62c}.secondary{border:1px solid var(--line);color:white;background:#ffffff08;padding:13px 22px;border-radius:14px}
+.app{max-width:900px;margin:36px auto 0;border:1px solid #ffffff20;border-radius:24px;overflow:hidden;background:#0e1020eF;box-shadow:0 35px 100px #0008,0 0 65px #8b5cf616;backdrop-filter:blur(20px);text-align:right}
+.appbar{height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid var(--line);background:#ffffff04}.lights{display:flex;gap:7px}.lights i{width:9px;height:9px;border-radius:50%;background:#3e415c}.app-title{display:flex;align-items:center;gap:9px;font-weight:700;font-size:14px}.mini-logo{width:26px;height:26px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(135deg,var(--purple),var(--cyan));color:#0b0c18;font-weight:900}
+.chat{padding:25px;min-height:265px;max-height:600px;overflow-y:auto}.welcome{display:flex;gap:13px;align-items:flex-start;max-width:650px}.avatar{flex-shrink:0;width:38px;height:38px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,#8b5cf6,#40e0d0);color:#080914;font-weight:900}.bubble{background:#ffffff08;border:1px solid var(--line);border-radius:4px 17px 17px 17px;padding:15px 17px;line-height:1.9;color:#e7e8fa;white-space:pre-wrap;overflow-wrap:anywhere}.bubble small{display:block;color:#9c9fbd;margin-bottom:5px;font-size:11px}.suggestions{display:flex;gap:9px;flex-wrap:wrap;margin:22px 0 0 50px}.suggestion{border:1px solid #ffffff17;background:#ffffff05;color:#d7d9f1;border-radius:12px;padding:9px 13px;font-size:13px}.suggestion:hover{border-color:#8b5cf6;color:white;background:#8b5cf615}
+.messages{display:flex;flex-direction:column;gap:16px}.user-msg{align-self:flex-start;max-width:78%;background:#7252d9;color:white;border-radius:16px 4px 16px 16px;padding:12px 16px;line-height:1.8}.ai-msg{display:flex;gap:12px;align-items:flex-start}.ai-msg .bubble{max-width:85%;white-space:pre-wrap;overflow-wrap:anywhere}
+.composer{padding:16px 20px 20px;border-top:1px solid var(--line);background:#ffffff03}.inputbox{display:flex;align-items:center;gap:10px;border:1px solid #ffffff20;border-radius:17px;padding:8px;background:#080a16}.inputbox textarea{resize:none;flex:1;min-height:42px;max-height:130px;background:transparent;border:0;outline:0;color:white;padding:10px;line-height:1.7}.inputbox textarea::placeholder{color:#777b9c}.send{width:43px;height:43px;border:0;border-radius:13px;background:linear-gradient(135deg,#a78bfa,#5eead4);font-size:20px;color:#090a17;font-weight:900}.hint{color:#777b99;font-size:11px;text-align:center;margin-top:10px}.typing{display:inline-flex;gap:5px;padding:5px 0}.typing i{width:6px;height:6px;border-radius:50%;background:#a78bfa;animation:pulse 1s infinite ease-in-out}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}@keyframes pulse{0%,80%,100%{opacity:.3;transform:translateY(0)}40%{opacity:1;transform:translateY(-4px)}}
+.section{padding:76px 0}.section-head{text-align:center;margin-bottom:34px}.section-head h2{font-size:clamp(28px,4vw,42px);margin:0 0 10px}.section-head p{color:var(--muted);margin:0}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:linear-gradient(145deg,#ffffff0b,#ffffff03);border:1px solid var(--line);border-radius:20px;padding:24px;transition:.25s}.card:hover{transform:translateY(-5px);border-color:#8b5cf666;background:#8b5cf60b}.icon{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;font-size:23px;background:linear-gradient(135deg,#8b5cf629,#40e0d019);border:1px solid #ffffff12}.card h3{margin:17px 0 7px;font-size:18px}.card p{color:var(--muted);font-size:14px;line-height:1.9;margin:0}
+footer{border-top:1px solid var(--line);padding:25px 0;color:#8e92b0;font-size:13px}.foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.toast{position:fixed;bottom:22px;left:22px;background:#191b31;border:1px solid #ffffff22;padding:12px 17px;border-radius:13px;box-shadow:0 10px 30px #0007;opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none}.toast.show{opacity:1;transform:translateY(0)}
+@media(max-width:760px){.navlinks{display:none}.hero{padding-top:54px}.hero p{font-size:15px}.chat{padding:16px;min-height:250px}.suggestions{margin-right:0;margin-left:0}.cards{grid-template-columns:1fr}.app{border-radius:18px}.wrap{padding:0 16px}.section{padding:55px 0}.user-msg{max-width:92%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+  <div class="brand"><span class="logo">✦</span><span>NOVA <span class="gradient">AI</span></span></div>
+  <div class="navlinks"><a href="#chat">جرّب المساعد</a><a href="#features">المميزات</a><a href="#about">عن NOVA</a></div>
+  <button class="pill" onclick="document.querySelector('#chat').scrollIntoView({behavior:'smooth'})">ابدأ الآن ↗</button>
+</nav>
+<header class="hero">
+  <div class="eyebrow"><span class="dot"></span> جيل جديد من الذكاء الاصطناعي</div>
+  <h1>فكرتك تبدأ هنا.<br><span class="gradient">والإبداع ما له حدود.</span></h1>
+  <p>مساعدك الذكي للكتابة، الدراسة، البرمجة، وتوليد الأفكار — كل شيء في مساحة واحدة بتجربة بسيطة وأنيقة.</p>
+  <div class="actions"><button class="primary" onclick="document.querySelector('#prompt').focus();document.querySelector('#chat').scrollIntoView({behavior:'smooth'})">✨ جرّب NOVA AI</button><button class="secondary" onclick="document.querySelector('#features').scrollIntoView({behavior:'smooth'})">اكتشف المميزات ↓</button></div>
+  <section class="app" id="chat">
+    <div class="appbar"><div class="app-title"><span class="mini-logo">✦</span> NOVA AI <span id="connectionStatus" style="color:#fbbf24;font-size:11px">● جارٍ الاتصال...</span></div><div class="lights"><i></i><i></i><i></i></div></div>
+    <div class="chat">
+      <div class="messages" id="messages">
+        <div class="welcome" id="welcome"><div class="avatar">✦</div><div class="bubble"><small>NOVA AI · مساعدك الذكي</small>أهلًا بك! 👋 أنا NOVA، مساعدك الإبداعي. اكتب فكرتك أو اختر اقتراحًا، ولنبدأ.</div></div>
+      </div>
+      <div class="suggestions" id="suggestions">
+        <button class="suggestion" onclick="usePrompt('اشرح لي مفهومًا صعبًا بطريقة سهلة')">📚 اشرح لي درسًا</button>
+        <button class="suggestion" onclick="usePrompt('اكتب لي قصة خيال علمي مشوقة')">✍️ اكتب قصة</button>
+        <button class="suggestion" onclick="usePrompt('اقترح أفكار مشروع تقني مبتكر')">💡 ابتكر فكرة</button>
+        <button class="suggestion" onclick="usePrompt('ساعدني أكتب كود صفحة ويب جميلة')">💻 ساعدني في البرمجة</button>
+      </div>
+    </div>
+    <div class="composer"><div class="inputbox"><textarea id="prompt" rows="1" placeholder="اكتب رسالتك إلى NOVA AI..." onkeydown="handleKey(event)"></textarea><button class="send" aria-label="إرسال" onclick="sendMessage()">➤</button></div><div class="hint">NOVA يتصل بخادم الذكاء الاصطناعي. لا تضع مفتاح API في هذه الصفحة.</div></div>
+  </section>
+</header>
+<section class="section" id="features">
+  <div class="section-head"><h2>كل أدواتك الذكية <span class="gradient">في مكان واحد</span></h2><p>واجهة مصممة لتساعدك تفكر أسرع وتنجز بإبداع أكبر.</p></div>
+  <div class="cards">
+    <article class="card"><div class="icon">🧠</div><h3>أفكار خارج الصندوق</h3><p>حوّل الخواطر البسيطة إلى أفكار مشاريع ومحتوى وخطط قابلة للتطوير.</p></article>
+    <article class="card"><div class="icon">✍️</div><h3>كتابة أكثر ذكاءً</h3><p>ساعد نفسك في صياغة الرسائل، القصص، الملخصات، والعروض بأسلوب واضح.</p></article>
+    <article class="card"><div class="icon">⚡</div><h3>تعلم أسرع</h3><p>قسّم المواضيع الصعبة إلى خطوات بسيطة وأمثلة وأسئلة للتدريب.</p></article>
+    <article class="card"><div class="icon">💻</div><h3>مساعد برمجي</h3><p>ابدأ تصميم صفحات الويب، افهم الأخطاء، وطوّر أفكارك التقنية.</p></article>
+    <article class="card"><div class="icon">🎨</div><h3>إبداع بلا تعقيد</h3><p>اكتشف اتجاهات بصرية، أسماء مشاريع، أفكار تصميم، ومفاهيم جديدة.</p></article>
+    <article class="card"><div class="icon">🌙</div><h3>تجربة هادئة وفخمة</h3><p>تصميم داكن متجاوب مع الجوال والكمبيوتر، وتفاصيل ضوئية ناعمة.</p></article>
+  </div>
+</section>
+<section class="section" id="about" style="padding-top:0">
+  <div class="card" style="text-align:center;padding:35px 24px;background:linear-gradient(120deg,#8b5cf617,#40e0d00d)">
+    <div class="eyebrow">✨ NOVA AI</div><h2 style="font-size:28px;margin:17px 0 8px">مساحتك القادمة للإبداع</h2><p style="color:var(--muted);max-width:650px;margin:0 auto;line-height:2">NOVA AI متصل بخادم آمن يرسل رسائلك إلى نموذج الذكاء الاصطناعي. يحتفظ الخادم بمفتاح API خارج المتصفح، ويمكنك متابعة المحادثة ضمن الجلسة نفسها.</p>
+  </div>
+</section>
+<footer><div class="foot"><span>© 2026 NOVA AI — مساعدك الذكي</span><span>صُنع للإبداع ✦</span></div></footer>
+</div>
+<div class="toast" id="toast">هذه واجهة تجريبية — الردود ليست من نموذج AI حقيقي.</div>
+<script>
+const promptBox = document.getElementById('prompt');
+const messages = document.getElementById('messages');
+const suggestions = document.getElementById('suggestions');
+const connectionStatus = document.getElementById('connectionStatus');
+const sendButton = document.querySelector('.send');
+const chatHistory = [];
+let busy = false;
+
+function usePrompt(text) { promptBox.value = text; promptBox.focus(); sendMessage(); }
+function handleKey(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); } }
+
+function addUserMessage(text) {
+  const el = document.createElement('div');
+  el.className = 'user-msg';
+  el.textContent = text;
+  messages.appendChild(el);
+  scrollChat();
+}
+
+function addAiMessage(text, label = 'NOVA AI') {
+  const row = document.createElement('div');
+  row.className = 'ai-msg';
+  const avatar = document.createElement('div');
+  avatar.className = 'avatar';
+  avatar.textContent = '✦';
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble';
+  const small = document.createElement('small');
+  small.textContent = label;
+  const body = document.createElement('div');
+  body.textContent = text;
+  bubble.append(small, body);
+  row.append(avatar, bubble);
+  messages.appendChild(row);
+  scrollChat();
+  return row;
+}
+
+function addTyping() {
+  const row = document.createElement('div');
+  row.className = 'ai-msg';
+  row.innerHTML = '<div class="avatar">✦</div><div class="bubble"><small>NOVA AI · يكتب الآن</small><span class="typing"><i></i><i></i><i></i></span></div>';
+  messages.appendChild(row);
+  scrollChat();
+  return row;
+}
+
+function scrollChat() {
+  const chat = document.querySelector('.chat');
+  chat.scrollTop = chat.scrollHeight;
+}
+
+async function checkServer() {
+  try {
+    const res = await fetch('/api/health');
+    const data = await res.json();
+    if (data.configured) {
+      connectionStatus.textContent = '● متصل بالذكاء الاصطناعي';
+      connectionStatus.style.color = '#6ee7b7';
+    } else {
+      connectionStatus.textContent = '● يحتاج إعداد API';
+      connectionStatus.style.color = '#fbbf24';
+    }
+  } catch (_) {
+    connectionStatus.textContent = '● الخادم غير متصل';
+    connectionStatus.style.color = '#fb7185';
+  }
+}
+
+async function sendMessage() {
+  const value = promptBox.value.trim();
+  if (!value || busy) return;
+  document.getElementById('welcome')?.remove();
+  suggestions.style.display = 'none';
+  addUserMessage(value);
+  chatHistory.push({ role: 'user', content: value });
+  promptBox.value = '';
+  busy = true;
+  sendButton.disabled = true;
+  sendButton.style.opacity = '.55';
+  const typing = addTyping();
+  try {
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: chatHistory.slice(-20) })
+    });
+    const data = await response.json().catch(() => ({}));
+    typing.remove();
+    if (!response.ok) throw new Error(data.error || 'تعذر الحصول على رد من المساعد.');
+    const reply = (data.reply || '').trim() || 'لم يصلني رد نصي. جرّب مرة أخرى.';
+    chatHistory.push({ role: 'assistant', content: reply });
+    addAiMessage(reply, 'NOVA AI · متصل');
+  } catch (error) {
+    typing.remove();
+    addAiMessage('صار خطأ أثناء الاتصال: ' + (error.message || 'تأكد من تشغيل الخادم وإعداد مفتاح API.') + '\n\nإذا كنت تشغّل الموقع لأول مرة، راجع ملف README_AR داخل المشروع.', 'NOVA AI · تنبيه');
+    chatHistory.pop();
+    checkServer();
+  } finally {
+    busy = false;
+    sendButton.disabled = false;
+    sendButton.style.opacity = '1';
+    promptBox.focus();
+  }
+}
+
+checkServer();
+</script>
+</body>
+</html>

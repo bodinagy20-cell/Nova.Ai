@@ -53,7 +53,7 @@ async function ensureEngine(){
  if(!('gpu' in navigator)){throw new Error('جهازك أو متصفحك لا يدعم WebGPU. جرّب أحدث نسخة من Chrome أو Edge على الكمبيوتر.');}
  isLoading=true;progressWrap.hidden=false;sendBtn.disabled=true;statusEl.textContent='● جارٍ تحميل الذكاء الاصطناعي';hint.textContent='قد يستغرق التنزيل الأول عدة دقائق، ويعتمد على سرعة الإنترنت ومواصفات الجهاز.';
  try {
-   const {CreateMLCEngine}=await import('https://esm.run/@mlc-ai/web-llm');
+   const {CreateMLCEngine}=await import('https://esm.run/@mlc-ai/web-llm@0.2.82')
    engine=await CreateMLCEngine(MODEL,{initProgressCallback:(p)=>{progressText.textContent=p.text||'جارٍ تجهيز النموذج…';if(typeof p.progress==='number')progressBar.style.width=Math.max(0,Math.min(100,p.progress*100))+'%';}});
    statusEl.textContent='● الذكاء الاصطناعي جاهز';statusEl.style.color='#6ee7b7';progressText.textContent='اكتمل تحميل النموذج. يمكنك المحادثة الآن.';progressBar.style.width='100%';hint.textContent='جاهز! تم تحميل النموذج على جهازك. لا تحتاج إلى مفتاح API.';
    return engine;
